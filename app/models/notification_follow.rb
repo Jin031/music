@@ -1,0 +1,2 @@
+class NotificationFollow < ApplicationRecord
+end

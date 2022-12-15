@@ -1,0 +1,2 @@
+class NotificationComment < ApplicationRecord
+end

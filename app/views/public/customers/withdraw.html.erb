@@ -1,0 +1,20 @@
+<div class="container">
+ <div class="row">
+  <div class="mx-auto">
+   <div class="d-flex align-items-center justify-content-center" style="height:500px;"><div>
+   <h4 class="text-center">本当に退会しますか？</h4>
+   <p class="text-center">退会すると、会員情報や、</br>
+    これまでの投稿が排除されます。</br>
+    退会する場合は、「退会する」をクリックしてください。
+   </p>
+    <div class="mt-4">
+     <div class="text-center">
+       <%= link_to "退会しない", edit_customers_path,class:"btn btn-primary" %>
+       <%= link_to "退会する", unsubscribe_customers_path, method: :patch, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+     </div>
+    </div>
+  </div>
+ </div>
+</div>
+
+
