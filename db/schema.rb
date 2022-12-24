@@ -129,21 +129,17 @@ ActiveRecord::Schema.define(version: 2022_12_12_193510) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_genres", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "customer_id", null: false
+    t.integer "genre_id", null: false
     t.string "title", null: false
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_posts_on_genre_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "posts", "genres"
 end

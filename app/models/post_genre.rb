@@ -1,2 +1,0 @@
-class PostGenre < ApplicationRecord
-end

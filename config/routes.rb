@@ -6,6 +6,7 @@ Rails.application.routes.draw do
  scope module: :public do
   root to: "homes#top"
   resources :favorites, only: [:index]
+  resources :posts, only: [:new, :index, :create, :show, :destroy]
   resource :customers, only: [:show, :edit, :update] do
    collection do
     get 'withdraw'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
    end
   end
  end
- 
+
   devise_scope :customer do
     post 'customers/guest_sign_in', to: 'public/sessions#new_guest'
   end
