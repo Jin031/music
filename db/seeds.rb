@@ -16,6 +16,6 @@ if Rails.env.development?
   end
 end
 
-genres = %w(アニソン ボカロ)
+genres = %w(アニソン ボカロ ロック )
 
 genres.each{|name| Genre.create!(name: name)}

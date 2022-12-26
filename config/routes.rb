@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
 
+ namespace :admin do
+ root to: "customers#index"
+ resources :customers, only: [:index, :show, :update]
+ end
+
  scope module: :public do
   root to: "homes#top"
   resources :favorites, only: [:index]
