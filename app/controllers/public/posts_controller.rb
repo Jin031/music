@@ -10,15 +10,16 @@ class Public::PostsController < ApplicationController
  def create
   @post = current_customer.posts.build(post_params)
   if @post.save
-    redirect_to posts_path, notice: "ok"
+    redirect_to posts_path, notice: "投稿しました"
   else
-    flash.now[:alert] = "ng"
+    flash.now[:alert] = "投稿に失敗しました"
     render :new
   end
  end
 
  def show
   @post = Post.find(params[:id])
+  @comment = Comment.new
  end
 
  private

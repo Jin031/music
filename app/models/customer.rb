@@ -5,6 +5,25 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :profile_image
   has_many :posts
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :relationships, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :relationships, source: :followed
+  has_many :followers, through: :reverse_of_relationships, source: :follower
+
+  def follow(customer_id)
+   relationships.create(followed_id: customer_id)
+  end
+   # フォローを外すときの処理
+  def unfollow(customer_id)
+   relationships.find_by(followed_id: customer_id).destroy
+  end
+  # フォローしているか判定
+  def following?(customer)
+   followings.include?(customer)
+  end
+
 
   def get_profile_image(width, height)
    unless profile_image.attached?
