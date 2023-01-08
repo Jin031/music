@@ -17,13 +17,34 @@
        <h1 class="text-white border">LOGO</h1>
         <ul class="navbar-nav ml-auto">
 
+          <% if customer_signed_in? %>
+         <li>
+           <%= link_to 'マイページ', customer_path(current_customer), class:"btn btn-outline-light ml-5" %>
+         </li>
+         <li>
+           <%= link_to '投稿一覧', posts_path, class:"btn btn-outline-light ml-5" %>
+         </li>
+         <li>
+          <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
+         </li>
+           <% elsif  admin_signed_in? %>
+          <li>
+            <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-light ml-5" %>
+          </li>
+          <li>
+            <%= link_to 'コメント管理', admin_comments_path, class:"btn btn-outline-light ml-5" %>
+          </li>
+          <li>
+           <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
+          </li>
+          <% else %>
           <li>
            <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-success ml-5" %>
           </li>
           <li>
            <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-primary ml-5" %>
           </li>
-
+          <% end %>
         </ul>
       </div>
      </div>

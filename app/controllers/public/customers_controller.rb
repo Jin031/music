@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
  before_action :authenticate_customer!
  def show
-  @customer = current_customer
+  @customer = Customer.find(params[:id])
  end
 
  def edit
@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
  def update
   @customer = current_customer
   @customer.update(customer_params)
-  redirect_to customers_path
+  redirect_to customer_path
  end
 
  def withdraw

@@ -3,9 +3,10 @@
   <div class="mx-auto">
    <h4 class= "my-5">マイプロフィール</h4>
 
-      <%= link_to "編集する", edit_customers_path,class:"btn btn-sm btn-success" %>
-
-      <%= link_to "投稿一覧", posts_path,class:"btn btn-sm btn-success" %>
+     <% if @customer == current_customer %>
+      <%= link_to "編集する", edit_customer_path,class:"btn btn-sm btn-success" %>
+      <%= link_to "投稿する",  new_post_path,class:"btn btn-sm btn-success" %>
+     <% end %>
 
     <table class="table table-borderless mt-3">
      <thead></thead>
@@ -14,6 +15,16 @@
         <th>プロフィール画像</th>
         <td>
          <%= image_tag @customer.get_profile_image(100, 100) %>
+        </td>
+       </tr>
+       <tr>
+        <th>
+         <%= link_to "フォロー中", customer_followings_path(@customer.id) %>
+         <%= @customer.followings.count %>
+        </th>
+        <td>
+         <%= link_to "フォロワー", customer_followers_path(@customer.id) %>
+         <%= @customer.followers.count %>
         </td>
        </tr>
        <tr>

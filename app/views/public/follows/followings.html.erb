@@ -1,0 +1,22 @@
+<% if @customers.exists? %>
+  <% @customers.each do |customer| %>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= image_tag customer.get_profile_image(50, 50) %></td>
+          <td><%= customer.name %></td>
+          <td><%= customer.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
