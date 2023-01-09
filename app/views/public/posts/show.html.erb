@@ -24,6 +24,8 @@
     </p>
   <% end %>
 
+
+
   <% if current_customer.following?(@post.customer) %>
   <%= link_to "フォロー外す", customer_follows_path(@post.customer.id), method: :delete %>
   <% else %>
