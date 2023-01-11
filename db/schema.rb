@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_12_193510) do
+ActiveRecord::Schema.define(version: 2022_12_12_163307) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -103,28 +103,13 @@ ActiveRecord::Schema.define(version: 2022_12_12_193510) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "notification_comments", force: :cascade do |t|
-    t.integer "comment_id", null: false
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.boolean "checked", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "notification_follows", force: :cascade do |t|
-    t.integer "follow_id", null: false
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
-    t.boolean "checked", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "notifications", force: :cascade do |t|
-    t.integer "favorite_id", null: false
-    t.integer "visitor_id", null: false
-    t.integer "visited_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "favorite_id"
+    t.integer "comment_id"
+    t.integer "post_id"
+    t.integer "follow_id"
+    t.string "action", null: false
     t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

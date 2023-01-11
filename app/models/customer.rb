@@ -11,6 +11,8 @@ class Customer < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'customer_id', dependent: :destroy
+
 
   def follow(customer_id)
    relationships.create(followed_id: customer_id)
@@ -23,6 +25,7 @@ class Customer < ApplicationRecord
   def following?(customer)
    followings.include?(customer)
   end
+
 
 
   def get_profile_image(width, height)
