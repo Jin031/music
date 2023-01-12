@@ -5,9 +5,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
    before_action :configure_permitted_parameters, only: [:create]
    before_action :check_guest, only: %i[update destroy]
-   
+
    def after_sign_up_path_for(resource)
-     customers_path
+     customer_path(resource)
    end
 
   def check_guest
