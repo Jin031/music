@@ -22,7 +22,7 @@ end
   resources :favorites, only: [:index, :create, :destroy]
   resources :comments, only: [:create, :destroy]
  end
-  resources :notifications, only: :index
+  resources :notifications, only: [:index]
   resources :customers, only: [:show, :edit, :update] do
    resource :follows, only: [:create, :destroy]
    get 'followings' => 'follows#followings', as: 'followings'
