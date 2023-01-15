@@ -18,5 +18,13 @@ class Admin::CommentsController < ApplicationController
 
  def destroy
 
+ @comment.destroy
+ redirect_to admin_comments_path
+ end
+
+ private
+
+ def comment_params
+  params.require(:comment).permit(:comment)
  end
 end

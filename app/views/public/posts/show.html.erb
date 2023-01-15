@@ -9,6 +9,11 @@
     <% end %>
   <% end %>
 
+   <% if @post.customer == current_customer %>
+     <%= link_to "削除", post_path(@post), method: :delete %>
+   <% else %>
+   <% end %>
+
 
   <% if @post.favorited_by?(current_customer) %>
     <p>
@@ -31,6 +36,7 @@
   <% else %>
   <%= link_to "フォローする", customer_follows_path(@post.customer.id), method: :post %>
   <% end %>
+
 
   <div>
   <p>コメント件数：<%= @post.comments.count %></p>

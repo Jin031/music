@@ -1,15 +1,38 @@
 <div class="container">
  <div class="row justify-content-center">
-  <div class="col-8">
+  <div class="col-md-12">
    <h4 class= "mt-3 mb-5 text-center">不適切なコメント一覧</h4>
     <div class="row justify-content-between">
 
-
-<% @comments.each do |comment| %>
-  <%= comment.comment %><br>
-<% end %>
-
+     <div class="col-md-8 offset-md-1">
+      <table class="table table-hover table-inverse">
+       <thead>
+        <tr>
+         <th>アイコン</th>
+         <th>ニックネーム</th>
+         <th>会員ID</th>
+         <th>日付</th>
+         <th>コメント</th>
+         <th></th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @comments.each do |comment| %>
+        <tr>
+         <td><%= image_tag comment.customer.get_profile_image(50,50) %></td>
+         <td><%= comment.customer.name %></td>
+         <td><%= comment.customer.id %></td>
+         <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= comment.comment %></td>
+         <td><%= link_to "削除", admin_comment_path(comment.post, comment), method: :delete %></td>
+        </tr>
+        <% end %>
+       </tbody>
+      </table>
+     </div>
    </div>
   </div>
  </div>
 </div>
+
+

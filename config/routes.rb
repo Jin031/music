@@ -12,7 +12,11 @@ end
 
  namespace :admin do
  root to: "customers#index"
- resources :customers, only: [:index, :show, :update]
+ resources :customers, only: [:index, :show, :update] do
+  collection do
+    patch 'unsubscribe'
+   end
+  end
  resources :comments, only: [:index, :destroy]
  end
 
