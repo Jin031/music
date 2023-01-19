@@ -1,0 +1,28 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex">
+      <div class="avatar-wrapper">
+        <%= image_tag visitor.profile_image, class:'avatar-notice' %>
+      </div>
+      <div class="notice-wrapper">
+        <%= link_to customer_path(visitor),class: 'btn btn-link notice-link' do %>
+          <%= visitor.name %>さんが
+        <% end %>
+        <% case notification.action %>
+        <% when 'follow' then %>
+          あなたをフォローしました。
+          <%= link_to '既読',notification_path(notification.id),method: :put, class: 'btn btn-link notice-link' %>
+        <% when 'favorite' %>
+          <%= link_to 'あなたの投稿', post_path(notification.post_id), class: 'btn btn-link notice-link' %>
+          にいいねしました。
+          <%= link_to '既読',notification_path(notification.id),method: :put, class: 'btn btn-link notice-link' %>
+        <% end %>
+        <div class="time">
+          <%= notification.how_long_ago %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

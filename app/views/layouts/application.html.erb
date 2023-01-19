@@ -22,9 +22,6 @@
            <%= link_to 'マイページ', customer_path(current_customer), class:"btn btn-outline-light ml-5" %>
          </li>
          <li>
-           <%= link_to '投稿一覧', posts_path, class:"btn btn-outline-light ml-5" %>
-         </li>
-         <li>
           <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
          </li>
            <% elsif  admin_signed_in? %>

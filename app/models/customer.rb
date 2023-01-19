@@ -11,8 +11,8 @@ class Customer < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Follow", foreign_key: "followed_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  has_many :active_notifications, class_name: 'Notification', foreign_key: 'customer_id', dependent: :destroy
-
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def follow(customer_id)
    relationships.create(followed_id: customer_id)
@@ -41,6 +41,10 @@ class Customer < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com', name: 'たろう',) do |customer|
       customer.password = SecureRandom.urlsafe_base64
     end
+  end
+
+  def create_notification_follow!(current_customer)
+   temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
   end
 end
 

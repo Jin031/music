@@ -5,11 +5,12 @@ class Follow < ApplicationRecord
 
 
   def create_notification_follow!
-    customer = Customer.find(followed_id)
-    temp = Notification.where(["follow_id = ? and action = ? ", id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and follow_id = ? and action = ? ", follower_id, followed_id, id, 'follow'])
     if temp.blank?
-      notification = customer.active_notifications.new(
+      notification = Notification.new(
         follow_id: id,
+        visitor_id: follower_id,
+        visited_id: followed_id,
         action: 'follow'
       )
       notification.save if notification.valid?

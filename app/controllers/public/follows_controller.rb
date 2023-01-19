@@ -1,8 +1,8 @@
 class Public::FollowsController < ApplicationController
    # フォローするとき
   def create
-    current_customer.follow(params[:customer_id])
-    Follow.where(follower_id: current_customer.id, followed_id: params[:customer_id]).first.create_notification_follow!
+    follow = current_customer.follow(params[:customer_id])
+    follow.create_notification_follow!
     redirect_to request.referer
   end
   # フォロー外すとき

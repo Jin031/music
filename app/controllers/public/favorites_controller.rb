@@ -8,7 +8,7 @@ class Public::FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     favorite = current_customer.favorites.new(post_id: post.id)
     favorite.save
-    Favorite.where(customer_id: current_customer.id).first.create_notification_favorite!(current_customer)
+    post.create_notification_favorite!(current_customer)
     redirect_to post_path(post)
   end
 

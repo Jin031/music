@@ -104,7 +104,8 @@ ActiveRecord::Schema.define(version: 2022_12_12_163307) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.integer "customer_id", null: false
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
     t.integer "favorite_id"
     t.integer "comment_id"
     t.integer "post_id"

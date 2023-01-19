@@ -24,11 +24,12 @@
          <td><%= comment.customer.id %></td>
          <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
          <td><%= comment.comment %></td>
-         <td><%= link_to "削除", admin_comment_path(comment.post, comment), method: :delete %></td>
+         <td><%= link_to "削除", admin_comment_path(comment.id), method: :delete %></td>
         </tr>
         <% end %>
        </tbody>
       </table>
+     
      </div>
    </div>
   </div>
