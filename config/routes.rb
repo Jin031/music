@@ -12,8 +12,8 @@ end
 
  namespace :admin do
  root to: "customers#index"
- resources :customers, only: [:index, :show, :update] do
-  collection do
+ resources :customers, only: [:index, :show] do
+  member do
     patch 'unsubscribe'
    end
   end
@@ -35,6 +35,9 @@ end
    collection do
     get 'withdraw'
     patch 'unsubscribe'
+   end
+    member do
+      get 'posts'
    end
   end
  end

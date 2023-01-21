@@ -9,13 +9,13 @@ class Admin::CustomersController < ApplicationController
  end
 
  def unsubscribe
-  @customer = current_customer
+  @customer = Customer.find(params[:id])
   @customer.update(is_deleted: true)
-  sign_out_and_redirect(current_customer)
+  redirect_to admin_customers_path
  end
 
  def customer_params
-  params.require(:customer).permit(:name, :introduction, :email, :is_deleted)
+  params.require(:customer).permit(:name, :introduction, :email)
  end
 
 end

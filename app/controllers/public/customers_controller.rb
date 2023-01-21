@@ -23,6 +23,16 @@ class Public::CustomersController < ApplicationController
   sign_out_and_redirect(current_customer)
  end
 
+ def posts
+  @customer = Customer.find(params[:id])
+  
+  if current_customer.id == @customer.id
+   @posts = current_customer.posts
+  else
+   @posts = @customer.posts
+  end
+ end
+
  private
 
  def customer_params

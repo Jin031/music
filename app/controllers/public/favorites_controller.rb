@@ -2,6 +2,7 @@ class Public::FavoritesController < ApplicationController
 
   def index
     @favorites = current_customer.favorites
+   
   end
 
   def create

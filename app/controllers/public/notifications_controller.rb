@@ -2,7 +2,7 @@ class Public::NotificationsController < ApplicationController
    before_action :authenticate_customer!
 
   def index
-    @notifications = current_customer.passive_notifications.where(checked: false).where.not(visitor_id: current_customer.id).page(params[:page]).per(20)
+    @notifications = current_customer.passive_notifications.where(checked: false).where.not(visitor_id: current_customer.id).page(params[:page]).per(3)
   end
 
   def update

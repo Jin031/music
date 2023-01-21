@@ -18,6 +18,10 @@
           <%= link_to 'あなたの投稿', post_path(notification.post_id), class: 'btn btn-link notice-link' %>
           にいいねしました。
           <%= link_to '既読',notification_path(notification.id),method: :put, class: 'btn btn-link notice-link' %>
+        <% when 'comment' then %>
+          <%= link_to 'あなたの投稿', post_path(notification.post_id), class: 'btn btn-link notice-link' %>
+          にコメントしました。
+          <%= link_to '既読',notification_path(notification.id),method: :put, class: 'btn btn-link notice-link' %>
         <% end %>
         <div class="time">
           <%= notification.how_long_ago %>
