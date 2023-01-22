@@ -54,7 +54,7 @@
      <% end %>
     </div>
    </div>
- <%= link_to '投稿一覧', posts_path, class:"btn btn-sm btn-success my-3 ml-5" %>
+ <%= link_to '投稿一覧', posts_customer_path, class:"btn btn-sm btn-success my-3 ml-5" %>
  <%= link_to "退会させる", unsubscribe_admin_customer_path(@customer.id), method: :patch, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger my-3 ml-5" %>
 
 </div>

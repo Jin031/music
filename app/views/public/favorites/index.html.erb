@@ -5,8 +5,10 @@
     <div class="row justify-content-between">
 
   <% @favorites.each do |favorite| %>
-
-
+  <%= image_tag favorite.post.customer.get_profile_image(50,50) %>
+  <%= favorite.post.customer.name %>
+  <%= favorite.post.genre.name %>
+  <%= favorite.post.title %>
   <% end %>
 
    </div>
