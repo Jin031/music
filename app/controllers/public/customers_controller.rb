@@ -11,7 +11,7 @@ class Public::CustomersController < ApplicationController
  def update
   @customer = current_customer
   @customer.update(customer_params)
-  redirect_to customer_path
+  redirect_to customer_path, notice: "保存しました"
  end
 
  def withdraw
@@ -25,7 +25,6 @@ class Public::CustomersController < ApplicationController
 
  def posts
   @customer = Customer.find(params[:id])
-
   if current_customer.id == @customer.id
    @posts = current_customer.posts
   else

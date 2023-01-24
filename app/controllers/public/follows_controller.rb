@@ -4,7 +4,7 @@ class Public::FollowsController < ApplicationController
   def create
     follow = current_customer.follow(params[:customer_id])
     follow.create_notification_follow!
-    redirect_to request.referer
+    redirect_to request.referer, notice: "フォローしました"
   end
   # フォロー外すとき
   def destroy

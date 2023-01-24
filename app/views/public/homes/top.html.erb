@@ -1,28 +1,32 @@
-<div class="container">
- <div class="row">
-  <div class="px-3 mx-auto">
-   <p>ようこそ、MusicLabへ！</br>
-    このサイトは、音楽系コミュニティサイトになります。</br>
-   </p>
-  </div>
+<div class="main-visual">
+ <div class="main-visual-content">
+  <p class="text-center">ようこそ、MusicLabへ！</br>
+     このサイトは、音楽系コミュニティサイトになります。</br>
+     好きな音楽について紹介しよう！
+  </p>
  </div>
-
- <div class="row justify-content-center">
-  <div class="col-8">
+</div>
+<div class="main">
+ <div class="container">
+  <div class="row justify-content-center">
+   <div class="col-8">
    <h4 class= "mt-3 mb-4">トピック！</h4>
-    <div class="row justify-content-between">
+   <div class="row justify-content-between">
     <% @ranks.each do |rank| %>
     <div class="card mb-5" style="width: 20rem;">
      <%= image_tag rank.images[0] %>
-    <div class="card-body">
-    <h5 class="card-title">
-     <%= rank.title %>
-    </h5>
-    <p class="card-text"><%= rank.text.truncate(40) %></p>
-  </div>
-</div>
-    <% end %>
+     <div class="card-body">
+      <h5 class="card-title">
+       <%= rank.title %>
+      </h5>
+      <p class="card-text">
+       <%= rank.text.truncate(40) %>
+      </p>
+     </div>
     </div>
+    <% end %>
+   </div>
+   </div>
   </div>
  </div>
 </div>

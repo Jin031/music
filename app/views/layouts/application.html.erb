@@ -8,8 +8,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+
    <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
      <div class="container">
@@ -53,10 +53,15 @@
      </div>
     </nav>
    </header>
+   <%= render 'layouts/flash' %>
    <main>
-    <div class="container">
+    <% if controller.controller_name == "homes" %>
      <%= yield %>
-    </div>
+    <% else %>
+     <div class="container">
+      <%= yield %>
+     </div>
+    <% end %>
    </main>
   </body>
 

@@ -11,7 +11,7 @@ class Admin::CustomersController < ApplicationController
  def unsubscribe
   @customer = Customer.find(params[:id])
   @customer.update(is_deleted: true)
-  redirect_to admin_customers_path
+  redirect_to admin_customers_path, notice: "この会員を退会させました"
  end
 
  def customer_params

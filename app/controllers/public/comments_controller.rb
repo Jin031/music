@@ -6,12 +6,12 @@ class Public::CommentsController < ApplicationController
  comment.post_id = post.id
  comment.save
  post.create_notification_comment!(current_customer)
- redirect_to post_path(post)
+ redirect_to post_path(post), notice: "コメントしました"
  end
 
  def destroy
   Comment.find(params[:id]).destroy
-  redirect_to post_path(params[:post_id])
+  redirect_to post_path(params[:post_id]), notice: "コメントを削除しました"
  end
 
  private

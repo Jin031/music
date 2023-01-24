@@ -14,7 +14,6 @@ class Public::PostsController < ApplicationController
   if @post.save
     redirect_to posts_path, notice: "投稿しました"
   else
-    flash.now[:alert] = "投稿に失敗しました"
     render :new
   end
  end
@@ -27,7 +26,7 @@ class Public::PostsController < ApplicationController
  def destroy
   @post = Post.find(params[:id])
   @post.destroy
-  redirect_to new_post_path
+  redirect_to new_post_path, notice: "投稿を削除しました"
  end
 
  private
