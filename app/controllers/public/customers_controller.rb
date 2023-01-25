@@ -25,11 +25,12 @@ class Public::CustomersController < ApplicationController
 
  def posts
   @customer = Customer.find(params[:id])
-  if current_customer.id == @customer.id
+  if current_customer && current_customer.id == @customer.id
    @posts = current_customer.posts
   else
    @posts = @customer.posts
   end
+  @posts = @posts.page(params[:page])
  end
 
  private

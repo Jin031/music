@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
 
+
   validates :title, presence: true
   validates :text, presence: true
   validate :max_file_count
@@ -59,3 +60,4 @@ class Post < ApplicationRecord
    end
 
   end
+

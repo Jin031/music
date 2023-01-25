@@ -6,6 +6,9 @@ class Public::PostsController < ApplicationController
 
  def index
   @posts = Post.all.page(params[:page]).per(4)
+  if params[:genre_id]
+    @posts = @posts.where(genre_id: params[:genre_id])
+  end
  end
 
  def create
