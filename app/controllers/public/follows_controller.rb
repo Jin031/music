@@ -21,4 +21,10 @@ class Public::FollowsController < ApplicationController
     customer = Customer.find(params[:customer_id])
     @customers = customer.followers.page(params[:page]).per(4)
   end
+
+  private
+
+  def follow_params
+   params.require(:follow).permit(:follower_id, :followed_id)
+  end
 end

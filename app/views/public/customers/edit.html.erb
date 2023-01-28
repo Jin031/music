@@ -1,7 +1,7 @@
-<div class="container">
+<div class="main">
  <div class="row">
   <div class="mx-auto" style="max-width: 480px">
-   <h4 class= "my-5">会員情報編集</h4>
+   <h3 class= "my-5">会員情報編集</h3>
     <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
 
    <div class='form-group row'>
@@ -26,7 +26,7 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5" %>
    </div>
 
-   <div class="col-md-9 offset-md-3 row">
+   <div class="col-md-10 offset-md-2 row">
     <div>
      <%= f.submit "編集内容を保存",class:"btn btn-success" %>
     </div>

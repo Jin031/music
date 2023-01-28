@@ -1,4 +1,4 @@
-<div class="container">
+<div class="main">
  <div class="row">
   <div class="mx-auto">
    <div class="d-flex align-items-center justify-content-center" style="height:500px;"><div>
@@ -8,9 +8,13 @@
     退会する場合は、「退会する」をクリックしてください。
    </p>
     <div class="mt-4">
-     <div class="text-center">
-
-       <%= link_to "退会する", unsubscribe_customers_path, method: :patch, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-danger" %>
+     <div class="col-md-10 offset-md-2 row">
+      <div>
+       <%= link_to "退会しない", edit_customer_path(current_customer),class:"btn btn-primary" %>
+      </div>
+      <div class="offset-md-2">
+       <%= link_to "退会する", unsubscribe_customers_path, method: :patch, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger" %>
+      </div>
      </div>
     </div>
   </div>

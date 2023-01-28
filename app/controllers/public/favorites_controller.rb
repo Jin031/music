@@ -1,8 +1,7 @@
 class Public::FavoritesController < ApplicationController
  before_action :authenticate_customer!
   def index
-    @favorites = current_customer.favorites
-   
+    @favorites = current_customer.favorites.page(params[:page]).per(4)
   end
 
   def create
@@ -18,6 +17,12 @@ class Public::FavoritesController < ApplicationController
     favorite = current_customer.favorites.find_by(post_id: post.id)
     favorite.destroy
     redirect_to post_path(post)
+  end
+
+  private
+
+  def favorite_params
+   params.require(:favorite).permit(:customer_id, :post_id)
   end
 end
 

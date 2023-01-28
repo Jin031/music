@@ -1,7 +1,8 @@
+<div class="main">
 
 
 <%= @post.title %>
-<%= @post.text %>
+
 
 <% if @post.images.attached? %>
     <% @post.images.each do |image| %>
@@ -14,8 +15,10 @@
    <% else %>
    <% end %>
 
+   <%= @post.genre.name %>
+   <%= @post.text %>
 
-  <% if @post.favorited_by?(current_customer) %>
+ <% if @post.favorited_by?(@post.customer) %>
     <p>
       <%= link_to  post_favorite_path(@post), method: :delete do %>
         ♥<%= @post.favorites.count %> いいね
@@ -29,16 +32,6 @@
     </p>
   <% end %>
 
-
-  <% if @post.customer != current_customer %>
-  <% if current_customer.following?(@post.customer) %>
-  <%= link_to "フォロー外す", customer_follows_path(@post.customer.id), method: :delete %>
-  <% else %>
-  <%= link_to "フォローする", customer_follows_path(@post.customer.id), method: :post %>
-  <% end %>
-  <% end %>
-
-
   <div>
   <p>コメント件数：<%= @post.comments.count %></p>
   <% @post.comments.each do |comment| %>
@@ -50,6 +43,9 @@
     <% end %>
   <% end %>
 </div>
+
+
+
 <div>
   <%= form_with model: [@post, @comment] do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

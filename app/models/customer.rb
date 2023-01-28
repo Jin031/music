@@ -38,13 +38,17 @@ class Customer < ApplicationRecord
 
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com', name: 'たろう',) do |customer|
+    find_or_create_by!(email: 'guest@example.com', name: 'たろう') do |customer|
       customer.password = SecureRandom.urlsafe_base64
     end
   end
 
+  def guest?
+   email == 'guest@example.com'
+  end
+
   def create_notification_follow!(current_customer)
-   temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
+  temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
   end
 end
 

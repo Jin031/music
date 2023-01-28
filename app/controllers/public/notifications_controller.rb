@@ -12,4 +12,9 @@ class Public::NotificationsController < ApplicationController
     end
   end
 
+   private
+
+  def notification_params
+   params.require(:notification).permit(:visitor_id, :visited_id, :favorite_id, :comment_id, :post_id, :follow_id, :action, :checked)
+  end
 end

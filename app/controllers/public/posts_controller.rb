@@ -9,6 +9,9 @@ class Public::PostsController < ApplicationController
   if params[:genre_id]
     @posts = @posts.where(genre_id: params[:genre_id])
   end
+  if params[:keyword]
+   @posts = @posts.where("title LIKE ?", "%#{params[:keyword]}%")
+  end
  end
 
  def create
@@ -35,6 +38,6 @@ class Public::PostsController < ApplicationController
  private
 
  def post_params
-  params.require(:post).permit(:title, :text, :genre_id, images: [])
+  params.require(:post).permit(:title, :text, :customer_id, :genre_id, images: [])
  end
 end

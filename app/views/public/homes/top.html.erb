@@ -1,9 +1,11 @@
 <div class="main-visual">
  <div class="main-visual-content">
-  <p class="text-center">ようこそ、MusicLabへ！</br>
-     このサイトは、音楽系コミュニティサイトになります。</br>
+  <div class="d-flex align-items-center justify-content-center" style="height:100px;"></div>
+   <h5 class="text-center">ようこそ、MusicLabへ！</br>
+     このサイトは、音楽コミュニティサイトになります。</br>
      好きな音楽について紹介しよう！
-  </p>
+   </h5>
+  </div>
  </div>
 </div>
 <div class="main">
@@ -19,6 +21,9 @@
       <h5 class="card-title">
        <%= rank.title %>
       </h5>
+      <div>
+        <%= rank.genre.name %>
+      </div>
       <p class="card-text">
        <%= rank.text.truncate(40) %>
       </p>
