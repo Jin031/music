@@ -1,12 +1,12 @@
 class Public::CommentsController < ApplicationController
  before_action :authenticate_customer!
  def create
- post = Post.find(params[:post_id])
- comment = current_customer.comments.new(comment_params)
- comment.post_id = post.id
- comment.save
- post.create_notification_comment!(current_customer)
- redirect_to post_path(post), notice: "コメントしました"
+  post = Post.find(params[:post_id])
+  comment = current_customer.comments.new(comment_params)
+  comment.post_id = post.id
+  comment.save
+  post.create_notification_comment!(current_customer)
+  redirect_to post_path(post), notice: "コメントしました"
  end
 
  def destroy

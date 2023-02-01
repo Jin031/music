@@ -6,20 +6,18 @@ class Admin::CommentsController < ApplicationController
 
   @comments = []
   ngword.each do |keyword|  # 分割したキーワードごとに検索
-    @comments += Comment.where('comment LIKE(?)', "%#{keyword}%") # 部分一致で検索
+   @comments += Comment.where('comment LIKE(?)', "%#{keyword}%") # 部分一致で検索
   end
-
  end
 
 # def ng(text)
-
 #   ngword.any?{|t|text.include?(t)}
 # end
 
  def destroy
- @comment = Comment.find(params[:id])
- @comment.destroy
- redirect_to admin_comments_path, notice: "コメントを削除しました"
+  @comment = Comment.find(params[:id])
+  @comment.destroy
+  redirect_to admin_comments_path, notice: "コメントを削除しました"
  end
 
  private

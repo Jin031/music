@@ -8,13 +8,13 @@
      <%= form.submit '検索' %>
      <% end %>
     </div>
+
     <h3 class= "mt-3 mb-5 text-center">投稿一覧</h3>
     <div class="row justify-content-between">
      <% posts.each do |post| %>
      <div class="card mb-5" style="width: 20rem;">
       <%= image_tag post.images[0] %>
       <div class="card-body">
-
        <h5 class="card-title">
         <%= link_to post_path(post.id) do %>
         <%= post.title %>

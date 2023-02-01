@@ -14,15 +14,12 @@
           <%= link_to customer_path(favorite.customer.id) do %>
           <%= image_tag favorite.post.customer.get_profile_image(100,100) %>
           <% end %>
-
          </div>
         </td>
         <td class="p-4">
          <p class="mb-3" style="font-size:0.86em;font-weight:800;">
           <%= favorite.post.customer.name %>
          </p>
-
-
          <p>
           <%= link_to post_path(favorite.post.id) do %>
           <%= favorite.post.title %>

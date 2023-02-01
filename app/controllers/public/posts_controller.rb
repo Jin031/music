@@ -7,7 +7,7 @@ class Public::PostsController < ApplicationController
  def index
   @posts = Post.all.page(params[:page]).per(4)
   if params[:genre_id]
-    @posts = @posts.where(genre_id: params[:genre_id])
+     @posts = @posts.where(genre_id: params[:genre_id])
   end
   if params[:keyword]
    @posts = @posts.where("title LIKE ?", "%#{params[:keyword]}%")
@@ -26,6 +26,7 @@ class Public::PostsController < ApplicationController
 
  def show
   @post = Post.find(params[:id])
+  @post_comments = @post.comments.page(params[:page]).per(3)
   @comment = Comment.new
  end
 
