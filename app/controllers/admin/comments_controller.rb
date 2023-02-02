@@ -26,3 +26,4 @@ class Admin::CommentsController < ApplicationController
   params.require(:comment).permit(:customer_id, :post_id, :comment)
  end
 end
+
