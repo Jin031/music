@@ -22,28 +22,24 @@ class Post < ApplicationRecord
   def create_notification_favorite!(current_customer)
       # すでいいねの通知があるか?
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
-
       # ない場合いいねの通知作成
-    if temp.blank?
-      notification = current_customer.active_notifications.new(
-        post_id: id,
-        visited_id: customer_id,
-        action: 'favorite'
-      )
-
+      if temp.blank?
+        notification = current_customer.active_notifications.new(
+          post_id: id,
+          visited_id: customer_id,
+          action: 'favorite'
+        )
       #自分の投稿だったら通知済み
       if notification.visitor_id == notification.visited_id
-        notification.checked = true
+         notification.checked = true
       end
       notification.save if notification.valid?
-    end
+      end
   end
 
-
   def create_notification_comment!(current_customer)
-   temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'comment'])
-
-   if temp.blank?
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'comment'])
+    if temp.blank?
       notification = current_customer.active_notifications.new(
         post_id: id,
         visited_id: customer_id,
@@ -54,8 +50,7 @@ class Post < ApplicationRecord
         notification.checked = true
       end
       notification.save if notification.valid?
-   end
+    end
   end
-
 end
 

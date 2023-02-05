@@ -1,5 +1,5 @@
 class Public::FavoritesController < ApplicationController
- before_action :authenticate_customer!
+  before_action :authenticate_customer!
   def index
     @favorites = current_customer.favorites.page(params[:page]).per(4)
   end
@@ -22,7 +22,7 @@ class Public::FavoritesController < ApplicationController
   private
 
   def favorite_params
-   params.require(:favorite).permit(:customer_id, :post_id)
+    params.require(:favorite).permit(:customer_id, :post_id)
   end
 end
 

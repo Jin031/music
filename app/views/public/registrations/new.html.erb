@@ -1,51 +1,77 @@
 <div class="main">
-  <div class="row">
-   <div class="mx-auto" style="max-width: 480px">
-    <h3 class= "my-5">新規会員登録</h3>
-     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-     <%= render "public/shared/error_messages", resource: resource %>
-
-    <div class='form-group row'>
-     <%= f.label :profile_image, "プロフィール画像", class: "col-4" %>
-     <%= f.file_field :profile_image, accept: "image/*", class: "col-8" %>
-     <div class="col-4"></div>
-     <div class="col-8" id='new-image'></div>
-    </div>
-
-    <div class='form-group row'>
-     <%= f.label :image, "ニックネーム", class: "col-4" %>
-     <%= f.text_field :name, class: "col-5" %>
-    </div>
-
-    <div class='form-group row'>
-     <%= f.label :introduction, "自己紹介（任意）", class: "col-4" %>
-     <%= f.text_area :introduction, :size=>"50x5", class: "col-5" %>
-    </div>
-
-    <div class='form-group row'>
-     <%= f.label :email, "メールアドレス", class: "col-4" %>
-     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5" %>
-    </div>
-
-    <div class='form-group row'>
-     <%= f.label :email, "パスワード", class: "col-4" %>
-     <%= f.password_field :password, autocomplete: "new-password", class: "col-5" %>
-    </div>
-
-    <div class='form-group row'>
-     <%= f.label :password_confirmation, "パスワード再入力", class: "col-4" %>
-     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-5" %>
-    </div>
-
-    <div class="row">
-     <div class="col-md-3 my-1"></div>
-     <div class="col-md-3 my-3">
-      <%= f.submit "新規登録",class:"btn btn-success" %>
-     </div>
-    </div>
-     <% end %>
- 　 </div>
+  <div class="container">
+    <h3 class= "my-5 text-center">新規会員登録</h3>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+      <div class='form-group'>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-4 offset-md-1 col-lg-3">
+          <%= f.label :profile_image, "プロフィール画像" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4">
+          <%= f.file_field :profile_image, accept: "image/*" %>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-8" id='new-image'></div>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+            <%= f.label :image, "ニックネーム" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+            <%= f.text_field :name, class:"w-100" %>
+          </div>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+            <%= f.label :introduction, "自己紹介（任意）" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+            <%= f.text_area :introduction, :size=>"50x3", class:"w-100" %>
+          </div>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+            <%= f.label :email, "メールアドレス" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100" %>
+          </div>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+            <%= f.label :email, "パスワード" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+            <%= f.password_field :password, autocomplete: "new-password", class:"w-100" %>
+          </div>
+        </div>
+      </div>
+      <div class='form-group'>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+            <%= f.label :password_confirmation, "パスワード再入力" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-100" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 my-3" style="text-align: center;">
+          <%= f.submit "新規登録",class:"btn btn-success" %>
+        </div>
+      </div>
+      <% end %>
   </div>
- </div>
+</div>
 
 

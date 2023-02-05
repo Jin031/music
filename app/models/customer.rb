@@ -26,29 +26,26 @@ class Customer < ApplicationRecord
    followings.include?(customer)
   end
 
-
-
   def get_profile_image(width, height)
-   unless profile_image.attached?
-    file_path = Rails.root.join('app/assets/images/no_image.jpg')
-    profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-   end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+      profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com', name: 'たろう') do |customer|
-     customer.password = SecureRandom.urlsafe_base64
+      customer.password = SecureRandom.urlsafe_base64
     end
   end
 
   def guest?
-   email == 'guest@example.com'
+    email == 'guest@example.com'
   end
 
   def create_notification_follow!(current_customer)
-   temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_customer.id, customer_id, id, 'favorite'])
   end
 end
 

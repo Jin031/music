@@ -11,14 +11,15 @@
  <body>
   <header>
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container py-1">
-     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <div>
-       <%= link_to root_path do %>
+   <%= link_to root_path do %>
        <%= image_tag "logo.png" %>
        <% end %>
-      </div>
-      <ul class="navbar-nav ml-auto">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" style="margin-right: 40px;">
 
         <% if customer_signed_in? %>
        <li>
@@ -51,10 +52,9 @@
         <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-primary ml-5" %>
        </li>
         <% end %>
-      </ul>
-     </div>
-    </div>
-   </nav>
+    </ul>
+  </div>
+</nav>
   </header>
    <%= render 'layouts/flash' %>
   <main>

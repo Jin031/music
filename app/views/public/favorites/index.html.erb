@@ -35,11 +35,11 @@
      <% end %>
      </tbody>
     </table>
-    <%= paginate @favorites %>
     <% else %>
     <div class="d-flex align-items-center justify-content-center" style="height:100px;"></div>
     <p class="text-center">ユーザーはいません</p>
     <% end %>
+     <%= paginate @favorites %>
    </div>
   </div>
  </div>
