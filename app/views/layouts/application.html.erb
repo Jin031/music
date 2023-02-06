@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <title>Music</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
- </head>
- <body>
-  <header>
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   <%= link_to root_path do %>
-       <%= image_tag "logo.png" %>
-       <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto" style="margin-right: 40px;">
-
-        <% if customer_signed_in? %>
-       <li>
-        <%= link_to 'マイページ', customer_path(current_customer), class:"btn btn-outline-light ml-5" %>
-       </li>
-       <li>
-        <%= link_to '投稿一覧', posts_path, class:"btn btn-outline-light ml-5" %>
-       </li>
-       <li>
-        <%= link_to '投稿する', new_post_path, class:"btn btn-outline-light ml-5" %>
-       </li>
-       <li>
-        <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
-       </li>
-        <% elsif  admin_signed_in? %>
-       <li>
-        <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-light ml-5" %>
-       </li>
-       <li>
-        <%= link_to 'コメント管理', admin_comments_path, class:"btn btn-outline-light ml-5" %>
-       </li>
-       <li>
-        <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
-       </li>
-        <% else %>
-       <li>
-        <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-success ml-5" %>
-       </li>
-       <li>
-        <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-primary ml-5" %>
-       </li>
+  <head>
+    <title>Music</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png" %>
         <% end %>
-    </ul>
-  </div>
-</nav>
-  </header>
-   <%= render 'layouts/flash' %>
-  <main>
-   <div>
-   　<%= yield %>
-   </div>
-  </main>
- </body>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+       </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav ml-auto" style="margin-right: 80px;">
+
+              <% if customer_signed_in? %>
+             <li>
+               <%= link_to 'マイページ', customer_path(current_customer), class:"btn btn-outline-light ml-5" %>
+             </li>
+             <li>
+               <%= link_to '投稿一覧', posts_path, class:"btn btn-outline-light ml-5" %>
+             </li>
+             <li>
+               <%= link_to '投稿する', new_post_path, class:"btn btn-outline-light ml-5" %>
+             </li>
+             <li>
+               <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
+             </li>
+               <% elsif  admin_signed_in? %>
+             <li>
+               <%= link_to '会員一覧', admin_customers_path, class:"btn btn-outline-light ml-5" %>
+             </li>
+             <li>
+               <%= link_to 'コメント管理', admin_comments_path, class:"btn btn-outline-light ml-5" %>
+             </li>
+             <li>
+               <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"btn btn-outline-light ml-5" %>
+             </li>
+               <% else %>
+             <li>
+               <%= link_to '新規登録', new_customer_registration_path, class:"btn btn-success ml-5" %>
+             </li>
+             <li>
+               <%= link_to 'ログイン', new_customer_session_path, class:"btn btn-primary ml-5" %>
+              </li>
+               <% end %>
+           </ul>
+         </div>
+      </nav>
+    </header>
+      <%= render 'layouts/flash' %>
+    <main>
+      <div>
+   　    <%= yield %>
+      </div>
+    </main>
+  </body>
 </html>
 
 

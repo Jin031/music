@@ -1,41 +1,58 @@
 <div class="main">
- <div class="row">
-  <div class="mx-auto" style="max-width: 480px">
-    <h3 class= "my-5">会員情報編集</h3>
-    <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
-
-   <div class='form-group row'>
-    <%= f.label :profile_image, "プロフィール画像", class: "col-4" %>
-    <%= f.file_field :profile_image, accept: "image/*", class: "col-8" %>
-    <div class="col-4"></div>
-    <div class="col-8" id='new-image'></div>
-   </div>
-
-   <div class='form-group row'>
-    <%= f.label :image, "ニックネーム", class: "col-4" %>
-    <%= f.text_field :name, class: "col-5" %>
-   </div>
-
-   <div class='form-group row'>
-    <%= f.label :introduction, "自己紹介（任意）", class: "col-4" %>
-    <%= f.text_area :introduction, :size=>"50x5", class: "col-5" %>
-   </div>
-
-   <div class='form-group row mb-5'>
-    <%= f.label :email, "メールアドレス", class: "col-4" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-5" %>
-   </div>
-
-   <div class="col-md-10 offset-md-2 row">
-    <div>
-     <%= f.submit "編集内容を保存",class:"btn btn-success" %>
+  <div class="container">
+    <h3 class= "my-5 text-center">会員情報編集</h3>
+      <%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+    <div class='form-group'>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4 offset-md-1 col-lg-3">
+          <%= f.label :profile_image, "プロフィール画像" %>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+          <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-8" id='new-image'></div>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+          <%= f.label :image, "ニックネーム" %>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <%= f.text_field :name, class:"w-100" %>
+        </div>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+          <%= f.label :introduction, "自己紹介（任意）" %>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <%= f.text_area :introduction, :size=>"50x3", class:"w-100" %>
+        </div>
+      </div>
+    </div>
+    <div class='form-group'>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
+          <%= f.label :email, "メールアドレス" %>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100" %>
+        </div>
+      </div>
     </div>
 
-    <div class="offset-md-2">
-    <%= link_to "退会する", withdraw_customers_path,class:"btn btn-danger" %>
+    <div class="col-md-10 offset-md-2 row">
+      <div>
+        <%= f.submit "編集内容を保存",class:"btn btn-success" %>
+      </div>
+      <div class="offset-md-2">
+        <%= link_to "退会する", withdraw_customers_path,class:"btn btn-danger" %>
+      </div>
     </div>
-   </div>
-  <% end %>
+      <% end %>
   </div>
- </div>
 </div>
