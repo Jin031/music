@@ -18,11 +18,10 @@
          <%= @post.title %>
        </h4>
          <div class="text-center">
-         <%= @post.genre.name %><br>
-         <%= @post.text %><br>
+           <%= @post.genre.name %><br>
+           <%= @post.text %><br>
          </div>
-         <%= @post.created_at.strftime('%Y/%m/%d') %>
-
+           <%= @post.created_at.strftime('%Y/%m/%d') %>
 
            <% if @post.customer == current_customer %>
              <%= link_to "削除", post_path(@post), method: :delete %>
@@ -31,62 +30,59 @@
       </div>
     </div>
 
-  <div class="row mt-5">
-    <% if @post.favorited_by?(@post.customer) %>
-      <p>
-        <%= link_to  post_favorite_path(@post), method: :delete do %>
-          ♥<%= @post.favorites.count %> いいね
-        <% end %>
-      </p>
-    <% else %>
-      <p>
-        <%= link_to  post_favorites_path(@post), method: :post do %>
-          ♡<%= @post.favorites.count %> いいね
-        <% end %>
-      </p>
-   <% end %>
+    <div class="row mt-5">
+      <% if @post.favorited_by?(@post.customer) %>
+        <p>
+          <%= link_to  post_favorite_path(@post), method: :delete do %>
+            ♥<%= @post.favorites.count %> いいね
+          <% end %>
+        </p>
+      <% else %>
+        <p>
+          <%= link_to  post_favorites_path(@post), method: :post do %>
+            ♡<%= @post.favorites.count %> いいね
+          <% end %>
+        </p>
+     <% end %>
      <p class="ml-3">コメント件数：<%= @post.comments.count %></p>
-  </div>
-  <hr color="black">
-    <% if @post.customer != current_customer %>
-    <%= link_to customer_path(@post.customer.id) do %>
-          <%= image_tag @post.customer.get_profile_image(50, 50) %>
+    </div>
+    <hr color="black">
+      <% if @post.customer != current_customer %>
+      <%= link_to customer_path(@post.customer.id) do %>
+        <%= image_tag @post.customer.get_profile_image(50, 50) %>
+      <% end %>
+        <%= @post.customer.name %>
+        
+        <% if customer_signed_in? %>
+          <% if current_customer.following?(@post.customer) %>
+            <%= link_to "フォロー外す", customer_follows_path(@post.customer.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", customer_follows_path(@post.customer.id), method: :post %>
+          <% end %>
+        <% else %>
+          <span>管理者なのでフォローは出来ません</span>
         <% end %>
-          <%= @post.customer.name %>
+      <% end %>
 
-      <% if current_customer.following?(@post.customer) %>
+     <div class="mt-5">
+       <%= form_with model: [@post, @comment] do |f| %>
+         <%= f.text_area :comment, rows: '2', placeholder: "コメントを書こう" %>
+         <%= f.submit "送信する" %>
+     　<% end %>
+   　</div>
 
-
-              <%= link_to "フォロー外す", customer_follows_path(@post.customer.id), method: :delete %>
-    <% else %>
-              <%= link_to "フォローする", customer_follows_path(@post.customer.id), method: :post %>
-    <% end %>
-
-  <% end %>
-
-
-
-  <div class="mt-5">
-   <%= form_with model: [@post, @comment] do |f| %>
-    <%= f.text_area :comment, rows: '2', placeholder: "コメントを書こう" %>
-    <%= f.submit "送信する" %>
- 　<% end %>
-　</div>
-
-
- <div>
-   <% @post_comments.each do |comment| %>
-     <p><%= image_tag comment.customer.get_profile_image(50,50) %></p>
-       <%= comment.customer.name %>
-       <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-       <%= comment.comment %>
-         <% if comment.customer == current_customer %>
-           <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-         <% end %>
-   <% end %>
- </div>
- <hr color="black">
-
- <%= paginate @post_comments %>
+     <div>
+       <% @post_comments.each do |comment| %>
+         <p><%= image_tag comment.customer.get_profile_image(50,50) %></p>
+         <%= comment.customer.name %>
+         <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+         <%= comment.comment %>
+           <% if comment.customer == current_customer %>
+             <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+           <% end %>
+       <% end %>
+     </div>
+     <hr color="black">
+     <%= paginate @post_comments %>
   </div>
 </div>

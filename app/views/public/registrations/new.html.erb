@@ -6,21 +6,21 @@
       <div class='form-group'>
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-4 offset-md-1 col-lg-3">
-          <%= f.label :profile_image, "プロフィール画像" %>
+            <%= f.label :profile_image, "プロフィール画像" %>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4">
-          <%= f.file_field :profile_image, accept: "image/*" %>
+            <%= f.file_field :profile_image, accept: "image/*" %>
           </div>
           <div class="col-4"></div>
-          <div class="col-8" id='new-image'></div>
         </div>
+        <div id='new-image' style="display: flex; justify-content: center; flex-wrap: wrap; max-width: 300px; margin: 0 auto;"></div>
       </div>
       <div class='form-group'>
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
             <%= f.label :image, "ニックネーム" %>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <div class="col-xs-12 col-sm-12 col-md-4">
             <%= f.text_field :name, class:"w-100" %>
           </div>
         </div>
@@ -30,8 +30,8 @@
           <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
             <%= f.label :introduction, "自己紹介（任意）" %>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
-            <%= f.text_area :introduction, :size=>"50x3", class:"w-100" %>
+          <div class="col-xs-12 col-sm-12 col-md-4">
+            <%= f.text_area :introduction, :size=>"50x4", class:"w-100" %>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
           <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
             <%= f.label :email, "メールアドレス" %>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <div class="col-xs-12 col-sm-12 col-md-4">
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"w-100" %>
           </div>
         </div>
@@ -50,7 +50,7 @@
           <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
             <%= f.label :email, "パスワード" %>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <div class="col-xs-12 col-sm-12 col-md-4">
             <%= f.password_field :password, autocomplete: "new-password", class:"w-100" %>
           </div>
         </div>
@@ -60,7 +60,7 @@
           <div class="col-xs-12 col-sm-12 col-md-3 offset-md-1 col-lg-3">
             <%= f.label :password_confirmation, "パスワード再入力" %>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-5">
+          <div class="col-xs-12 col-sm-12 col-md-4">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"w-100" %>
           </div>
         </div>

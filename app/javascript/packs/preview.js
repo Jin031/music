@@ -1,5 +1,5 @@
-if (document.URL.match(/new|customers\/sign_up|customers\/\d{1,3}\/edit/g)){
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("turbolinks:load", function() {
+  if (document.URL.match(/new|customers\/sign_up|customers\/\d{1,3}\/edit/g)){
     const createImageHTML = (blob) => {
       const imageElement = document.getElementById('new-image');
       const blobImage = document.createElement('img');
@@ -38,5 +38,5 @@ if (document.URL.match(/new|customers\/sign_up|customers\/\d{1,3}\/edit/g)){
     } else {
 
     }
-  });
-}
+  }
+});

@@ -7,6 +7,7 @@ body{
 #new-image{
   object-fit: cover;
 }
+
 .new-img{
   max-width: 150px;
   display: inline-block;
@@ -89,7 +90,7 @@ body{
 @media screen and (max-width: 425px) {
 
 .pagination{
-  width: 60%;
+  width: 100%;
 }
 
 
@@ -104,3 +105,9 @@ body{
 
 
 }
+
+// #new-image img:nth-child(2) {
+//   padding: 1rem!important;
+//   white-space: pre!important;
+//   content: '\A'!important;
+// }
