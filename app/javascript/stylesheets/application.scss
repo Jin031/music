@@ -93,21 +93,28 @@ body{
   width: 100%;
 }
 
+.table-scroll {
+  overflow-x: scroll;
+}
 
-
-
-
-
-
-
-
-
-
+.table-scroll table {
+  width: 100%;
+  white-space: nowrap;
+}
+.show-img-big{
+    max-width: 150%;
+    margin-left: -25%;
 
 }
 
-// #new-image img:nth-child(2) {
-//   padding: 1rem!important;
-//   white-space: pre!important;
-//   content: '\A'!important;
-// }
+}
+
+@media screen and (min-width: 426px) {
+  .show-img, .show-img-big{
+    width: 60%;
+  }
+  .show-post-image:nth-child(2n){
+    margin-left: -20%;
+  }
+
+}

@@ -1,39 +1,38 @@
 <div class="main-visual">
- <div class="main-visual-content">
-  <div class="d-flex align-items-center justify-content-center" style="height:100px;"></div>
-   <h5 class="text-center">ようこそ、MusicLabへ！</br>
-     このサイトは、音楽コミュニティサイトになります。</br>
-     好きな音楽について紹介しよう！
-   </h5>
+  <div class="main-visual-content">
+    <div class="d-flex align-items-center justify-content-center" style="height:100px;"></div>
+    <h5 class="text-center">ようこそ、MusicLabへ！</br>
+      このサイトは、音楽コミュニティサイトになります。</br>
+      好きな音楽について紹介しよう！
+    </h5>
   </div>
- </div>
 </div>
 <div class="main">
- <div class="container">
-  <div class="row justify-content-center">
-   <div class="col-8">
-   <h4 class= "mt-3 mb-4">トピック！</h4>
-   <div class="row justify-content-between">
-    <% @ranks.each do |rank| %>
-    <div class="card mb-5" style="width: 20rem;">
-     <%= image_tag rank.images[0] %>
-     <div class="card-body">
-      <h5 class="card-title">
-       <%= rank.title %>
-      </h5>
-      <div>
-        <%= rank.genre.name %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h4 class= "mt-3 mb-4">トピック！</h4>
+        <div class="row justify-content-between">
+          <% @ranks.each do |rank| %>
+          <div class="card mb-5" style="width: 20rem;">
+            <%= image_tag rank.images[0] %>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= rank.title %>
+              </h5>
+              <div>
+                <%= rank.genre.name %>
+              </div>
+              <p class="card-text">
+                <%= rank.text.truncate(40) %>
+              </p>
+            </div>
+          </div>
+          <% end %>
+        </div>
       </div>
-      <p class="card-text">
-       <%= rank.text.truncate(40) %>
-      </p>
-     </div>
     </div>
-    <% end %>
-   </div>
-   </div>
   </div>
- </div>
 </div>
 
 
