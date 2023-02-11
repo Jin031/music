@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if Rails.env.development?
+
   Admin.create(email: 'xxx@xxx', password: '111111')
 
   (1..5).each do |i|
@@ -14,7 +14,7 @@ if Rails.env.development?
                      name: "test#{i}",
                      password: "111111")
   end
-end
+
 
 genres = %w(アニソン ボカロ ロック 邦楽 洋楽 J-POP )
 
