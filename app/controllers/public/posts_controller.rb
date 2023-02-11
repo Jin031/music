@@ -16,7 +16,6 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = current_customer.posts.build(post_params)
-    byebug
       if @post.save
         redirect_to posts_path, notice: "投稿しました"
       else
