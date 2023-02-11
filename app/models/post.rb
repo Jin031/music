@@ -12,13 +12,13 @@ class Post < ApplicationRecord
 
   def max_file_count
     if images.size > 4
-      errors.add(:images,"画像が多いです")
+      errors.add(:images,"が多いです")
     end
   end
 
   def min_file_count
     if images.size == 0
-      errors.add(:images,"画像が選択されていません。")
+      errors.add(:images,"が選択されていません")
     end
   end
 
