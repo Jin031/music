@@ -1,41 +1,39 @@
-<div class="main">
-  <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <h3 class= "my-5 text-center">フォロワー</h3>
-      <div class="row justify-content-between">
-        <% if @customers.exists? %>
-      <table class="table table-hover">
-        <tbody>
-          <% @customers.each do |customer| %>
-          <tr>
-            <td>
-              <div style="display:grid;place-items:center;">
-                <%= link_to customer_path(customer.id) do %>
-                  <%= image_tag customer.get_profile_image(100, 100) %>
-                <% end %>
-              </div>
-           </td>
-           <td class="p-4">
-             <p class="mb-3" style="font-size:0.86em;font-weight:800;"><%= customer.name %></p>
-             <p><%= customer.introduction&.truncate(40) %></p>
-           </td>
-           <td>
-             <% if current_customer.following?(customer) %>
-               <%= link_to "フォロー外す", customer_follows_path(customer.id), method: :delete %>
-             <% else %>
-               <%= link_to "フォローする", customer_follows_path(customer.id), method: :post %>
-             <% end %>
-           </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-        <%= paginate @customers %>
-        <% else %>
-      </div>
+<div class="row justify-content-center">
+  <div class="col-xs-12 col-sm-12 col-md-6">
+    <h3 class= "my-5 text-center">フォロワー</h3>
+    <div class="row justify-content-between">
+      <% if @customers.exists? %>
+    <table class="table table-hover">
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td>
+            <div style="display:grid;place-items:center;">
+              <%= link_to customer_path(customer.id) do %>
+                <%= image_tag customer.get_profile_image(100, 100) %>
+              <% end %>
+            </div>
+          </td>
+          <td class="p-4">
+            <p class="mb-3" style="font-size:0.86em;font-weight:800;"><%= customer.name %></p>
+            <p><%= customer.introduction&.truncate(40) %></p>
+          </td>
+          <td>
+            <% if current_customer.following?(customer) %>
+              <%= link_to "フォロー外す", customer_follows_path(customer.id), method: :delete %>
+            <% else %>
+              <%= link_to "フォローする", customer_follows_path(customer.id), method: :post %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+      <%= paginate @customers %>
+      <% else %>
     </div>
   </div>
-  <div class="d-flex align-items-center justify-content-center" style="height:100px;"></div>
-  <p class="text-center">ユーザーはいません</p>
-          <% end %>
 </div>
+<div class="d-flex align-items-center justify-content-center" style="height:100px;"></div>
+<p class="text-center">ユーザーはいません</p>
+      <% end %>

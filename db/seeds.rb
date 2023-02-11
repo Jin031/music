@@ -8,7 +8,7 @@
 
 if Rails.env.development?
   Admin.create(email: 'xxx@xxx', password: '111111')
-  
+
   (1..5).each do |i|
     Customer.create!(email: "xxx#{i}@xxx",
                      name: "test#{i}",
@@ -16,6 +16,6 @@ if Rails.env.development?
   end
 end
 
-genres = %w(アニソン ボカロ ロック )
+genres = %w(アニソン ボカロ ロック 邦楽 洋楽 J-POP )
 
 genres.each{|name| Genre.create!(name: name)}
