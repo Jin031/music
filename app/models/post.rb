@@ -8,10 +8,17 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :text, presence: true
   validate :max_file_count
+  validate :min_file_count
 
   def max_file_count
     if images.size > 4
       errors.add(:images,"画像が多いです")
+    end
+  end
+
+  def min_file_count
+    if images.size == 0
+      errors.add(:images,"画像が選択されていません。")
     end
   end
 
