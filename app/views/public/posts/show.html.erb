@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="row mt-5">
-    <% if @post.favorited_by?(@post.customer) %>
+    <% if @post.favorited_by?(current_customer) %>
     <p>
       <%= link_to  post_favorite_path(@post), method: :delete do %>
         ♥<%= @post.favorites.count %> いいね
