@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!, except: [:posts]
+  before_action :correct_customer, only: [:edit, :update]
+
   def show
     @customer = Customer.find(params[:id])
   end
@@ -38,6 +40,9 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :introduction, :email, :profile_image, :is_deleted)
   end
+
+  def correct_customer
+    @customer = Customer.find(params[:id])
+    redirect_to edit_customer_path(current_customer.id) unless @customer == current_customer
+  end
 end
-
-

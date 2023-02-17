@@ -50,12 +50,15 @@
             <%= simple_format(@customer.introduction) %>
           </td>
         </tr>
+        <% if @customer == current_customer %>
         <tr>
           <th>メールアドレス</th>
           <td>
             <%= @customer.email %>
           </td>
         </tr>
+        <% else %>
+        <% end %>
       </tbody>
     </table>
   </div>

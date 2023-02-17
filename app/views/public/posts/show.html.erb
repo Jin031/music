@@ -25,7 +25,7 @@
       </div>
         <%= @post.created_at.strftime('%Y/%m/%d') %>
           <% if @post.customer == current_customer %>
-            <%= link_to "削除", post_path(@post), method: :delete %>
+            <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
           <% else %>
           <% end %>
     </div>
@@ -75,7 +75,7 @@
       <%= comment.created_at.strftime('%Y/%m/%d') %><br>
       <%= comment.comment %>
         <% if comment.customer == current_customer %>
-          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+          <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
         <% end %>
     <% end %>
   </div>
