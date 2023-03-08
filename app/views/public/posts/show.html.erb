@@ -31,18 +31,22 @@
     </div>
   </div>
   <div class="row mt-5">
-    <% if @post.favorited_by?(current_customer) %>
+    <% if customer_signed_in? %>
+      <% if @post.favorited_by?(current_customer) %>
     <p>
       <%= link_to  post_favorite_path(@post), method: :delete do %>
         ♥<%= @post.favorites.count %> いいね
       <% end %>
     </p>
-    <% else %>
+      <% else %>
     <p>
       <%= link_to  post_favorites_path(@post), method: :post do %>
         ♡<%= @post.favorites.count %> いいね
       <% end %>
     </p>
+      <% end %>
+    <% else %>
+    <p>♡<%= @post.favorites.count %> いいね</p>
     <% end %>
     <p class="ml-3">コメント件数：<%= @post.comments.count %></p>
   </div>
