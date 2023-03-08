@@ -23,7 +23,7 @@ class Post < ApplicationRecord
   end
 
   def favorited_by?(customer)
-   favorites.exists?(customer_id: customer.id)
+    favorites.exists?(customer_id: customer.id)
   end
 
   def create_notification_favorite!(current_customer)
